@@ -19,7 +19,7 @@ r_mm = np.linspace(R1*1e3, R2*1e3, 100)
 #Velocity plots
 plt.figure()
 for i in range(len(Qw)):
-	ex1.vel_plot_1(r, R1, R2, U, mu, Qw[i], Qw_[i], r_mm)
+	ex1.vel_plot_1(r, R1, R2, U, mu, Qw[i], Qw_[i], r_mm, f"{Qw_}[ml/min]")
 
 #Shear stress plot
 plt.figure()
@@ -30,7 +30,7 @@ plt.show()
 
 
 #COMSOL simulation
-df = pd.read_csv('2_veldata.csv')
+df = pd.read_csv('COMSOL_velocity.csv')
 x = []
 y = []
 for i in range(len(df)):
@@ -39,8 +39,8 @@ for i in range(len(df)):
 
 
 
-ex1.vel_plot_1(r, R1, R2, U, mu, Qw[2], Qw_[2], r_mm) ##Only 2.2 ml/min
-plt.scatter(x, y, label="COMSOL simulation", marker=".")
+ex1.vel_plot_1(r, R1, R2, U, mu, Qw[2], Qw_[2], r_mm, "Analytical Solution") ##Only 2.2 ml/min
+plt.scatter(x, y, label="COMSOL simulation", marker=".", color="orange")
 plt.legend()
 plt.show()
 

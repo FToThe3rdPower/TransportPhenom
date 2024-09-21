@@ -20,10 +20,10 @@ def trz_1(r, R1, R2, U, mu, Qw):
 	return t_rz
 
 
-def vel_plot_1(r, R1, R2, U, mu, Qw, Qw_,  r_mm):
-	plt.plot(r_mm, vr_1(r, R1, R2, U, mu, Qw), label=f"{Qw_} [ml/min]")
+def vel_plot_1(r, R1, R2, U, mu, Qw, Qw_,  r_mm, label_name):
+	plt.plot(r_mm, vr_1(r, R1, R2, U, mu, Qw), label=f"{label_name}")
 	plt.title("Velocity profile")
-	plt.xlabel("Width [m]")
+	plt.xlabel("Width [mm]")
 	plt.ylabel("Velocity [m/s]")
 	plt.legend()
 	return
@@ -31,7 +31,7 @@ def vel_plot_1(r, R1, R2, U, mu, Qw, Qw_,  r_mm):
 def stress_plot_1(r, R1, R2, U, mu, Qw, Qw_, r_mm):
 	plt.plot(r_mm, trz_1(r, R1, R2, U, mu, Qw), label=f"{Qw_} [ml/min]")
 	plt.title("Shear stress profile")
-	plt.xlabel("Width [m]")
+	plt.xlabel("Width [mm]")
 	plt.ylabel("Stress [$N/m^2$]")
 	plt.legend()
 	return
@@ -44,23 +44,23 @@ def vr_2(r, R1, R2, U, mu, Qw, w1, w2):
 	return v_z
 
 
-def trz_2(r, R1, R2, U, mu, Qw):
-	t_rz = ( (2*mu*(R1**2)*(R2**2)*(w2-w1)) / ((R2**2) - (R1**2)) ) * (r**(-2))
+def trz_2(r, R1, R2, U, mu, Qw, w1, w2, value):
+	t_rz = value * (( (2*mu*(R1**2)*(R2**2)*(w2-w1)) / ((R2**2) - (R1**2)) ) * (r**(-2)))
 	return t_rz
 
 
-def vel_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm):
-	plt.plot(r_mm, vr_2(r, R1, R2, U, mu, Qw), label=f"{Qw_} [ml/min]")
+def vel_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm, w1, w2):
+	plt.plot(r_mm, vr_2(r, R1, R2, U, mu, Qw, w1, w2), label=f"Analytical solution")
 	plt.title("Velocity profile")
-	plt.xlabel("Width [m]")
-	plt.ylabel("Velocity [m/s]")
+	plt.xlabel("Width [mm]")
+	plt.ylabel("Velocity [rad/s]")
 	plt.legend()
 	return
 
-def stress_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm):
-	plt.plot(r_mm, trz_2(r, R1, R2, U, mu, Qw), label=f"{Qw_} [ml/min]")
+def stress_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm, w1, w2, value):
+	plt.plot(r_mm, trz_2(r, R1, R2, U, mu, Qw, w1, w2, value), label=f"Analytical soultion")
 	plt.title("Shear stress profile")
-	plt.xlabel("Width [m]")
+	plt.xlabel("Width [mm]")
 	plt.ylabel("Stress [$N/m^2$]")
 	plt.legend()
 	return
