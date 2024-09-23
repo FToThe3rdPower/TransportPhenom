@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -27,14 +29,20 @@ for i in range(len(df)):
     y.append((df.iloc[i][4]))
 
 plt.scatter(x, y, label="COMSOL simulation", color="orange", marker=".")
-
+plt.legend()
 
 ##Shear stress
 plt.figure()
-value = 1 ## Either +1 or -1
-ex1.stress_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm, w1, w2, 1)
-ex1.stress_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm, w1, w2, -1)
 
+df = pd.read_csv('COMSOL_velocity.csv')
+x = []
+y = []
+for i in range(len(df)):
+    x.append(df.iloc[i][6])
+    y.append((df.iloc[i][7])*(2*np.pi)) #Conversion to rad/s cause forgot in COMSOL
+
+plt.scatter(x, y, marker=".", label="COMSOL simulation", color="orange")
+ex1.stress_plot_2(r, R1, R2, U, mu, Qw, Qw_, r_mm, w1, w2)
 
 
 plt.legend()
