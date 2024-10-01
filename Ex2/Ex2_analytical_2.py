@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import math 
 
 # Function for theoretical temperature distribution
 def T(Ta, T0, m, L, z):
@@ -11,7 +12,7 @@ T0 = 100 + 273.15  # Initial temperature in Kelvin
 h = 20  # Some constant related to heat transfer
 B = 0.002  # Constant
 K = 247  # Thermal conductivity or some other constant
-m = h / (K * B/2)  # Calculate m
+m =  math.sqrt(h / (K * (B/2))) # Calculate m
 L = 0.07  # Length in meters
 Ta = 20 + 273.15  # Ambient temperature in Kelvin
 
