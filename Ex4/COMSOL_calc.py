@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-file = "COMSOL_plot.xlsx"
+file = "D:/Documents/Transport Phenomena/TransportPhenom/Ex4/COMSOL_plot.xlsx"
 df = pd.read_excel(file)
 
 r = df["R"]
